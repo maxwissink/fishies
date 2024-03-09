@@ -76,114 +76,6 @@
       "__Prefab": "prefabs/player.prefab"
     },
     {
-      "Id": "7936f8be-5227-4f9d-b93a-3f77eea27104",
-      "Name": "fish (1)",
-      "Position": "131.3137,-113.1083,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "abbabd80-d46b-417b-9904-90c291685c05",
-      "Name": "fish (2)",
-      "Position": "24.54066,-97.25134,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "7de71bf7-5a41-4c36-8484-0dfe83024b14",
-      "Name": "fish (3)",
-      "Position": "162.5891,88.90688,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "6bbb2a62-8f61-4288-8db3-6cee364f2d88",
-      "Name": "fish (4)",
-      "Position": "-126.8187,-118.9294,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "65df4c65-0ed2-4cee-9c0e-1b82c8531b43",
-      "Name": "fish (5)",
-      "Position": "302.0686,270.7999,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "683338bb-7044-459e-b5c5-2ffe0516809f",
-      "Name": "fish (6)",
-      "Position": "-148.1063,252.4883,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "8c850514-4239-4e61-ab3c-f854c40a2002",
-      "Name": "fish (7)",
-      "Position": "-57.11724,427.8618,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "8e9b9749-e391-49b3-beb2-bbf66540809b",
-      "Name": "fish (8)",
-      "Position": "79.99001,454.2465,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "14e97c00-7600-445f-b53c-70851d66cd38",
-      "Name": "fish (9)",
-      "Position": "227.7943,456.3544,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "91e96b64-08ff-4b53-8448-217d213c3bc5",
-      "Name": "fish (10)",
-      "Position": "-164.8519,50.35273,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "f23a9a96-ebbc-42db-be8c-fed1c53b1846",
-      "Name": "fish (11)",
-      "Position": "287.651,-248.6364,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
-      "Id": "9f7ebce4-8e54-4bd3-9acf-1d3a294885c7",
-      "Name": "fish (12)",
-      "Position": "401.1972,14.66698,0",
-      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
-      "Tags": "fish",
-      "Enabled": true,
-      "__Prefab": "prefabs/fish.prefab"
-    },
-    {
       "Id": "ca824f34-d953-478a-b738-0d430ffef48d",
       "Name": "FishSpawner",
       "Enabled": true,
@@ -221,6 +113,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-09T15:49:07.5121248\u002B01:00",
+  "LastSaved": "2024-03-09T21:14:21.7192374\u002B01:00",
   "__references": []
 }

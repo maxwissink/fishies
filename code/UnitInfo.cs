@@ -29,7 +29,7 @@ public sealed class UnitInfo : Component
 	public bool IsDead { get; set; } = false;
 
 	public event Action<float> OnDamage;
-	public event Action OnDeath;
+	public event Action<GameObject> OnDeath;
 
 	Vector3 _lastPos = new Vector3( 0f, 0f, 0f );
 	Vector3 _velocity = new Vector3( 0f, 0f, 0f );
@@ -78,9 +78,9 @@ public sealed class UnitInfo : Component
 		Health = 0f;
 		IsDead = true;
 
-		OnDeath?.Invoke();
+		OnDeath?.Invoke(GameObject);
 
-		GameObject.Destroy();
+		GameObject.DestroyImmediate();
 	}
 	
 	public void TurnAround()

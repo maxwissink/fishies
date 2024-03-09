@@ -17,7 +17,7 @@
       {
         "__type": "Player",
         "BiteDamage": 1,
-        "BiteDelay": 1,
+        "BiteDelay": 0.5,
         "BiteRange": 11,
         "Camera": {
           "_type": "gameobject",
