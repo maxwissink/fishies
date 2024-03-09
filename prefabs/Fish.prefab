@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "e8c220cb-1124-423e-b24e-111e657a2617",
+    "Id": "527626d7-8760-488d-9f4d-a267430faf76",
     "Name": "fish",
     "Enabled": true,
     "Components": [
@@ -32,13 +32,13 @@
         "__type": "Fish",
         "Controller": {
           "_type": "component",
-          "go": "e8c220cb-1124-423e-b24e-111e657a2617",
+          "go": "527626d7-8760-488d-9f4d-a267430faf76",
           "component_type": "CharacterController"
         },
         "Randomness": 0.5,
         "UnitInfo": {
           "_type": "component",
-          "go": "e8c220cb-1124-423e-b24e-111e657a2617",
+          "go": "527626d7-8760-488d-9f4d-a267430faf76",
           "component_type": "UnitInfo"
         },
         "WalkSpeed": 50

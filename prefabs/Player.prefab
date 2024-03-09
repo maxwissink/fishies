@@ -86,7 +86,7 @@
       {
         "Id": "06e32c1f-ac68-407c-aa7c-b8e1f3672f56",
         "Name": "Camera",
-        "Position": "0,0,500",
+        "Position": "0,0,1000",
         "Rotation": "0,0.7071068,0,0.7071068",
         "Tags": "maincamera",
         "Enabled": true,

@@ -72,13 +72,16 @@ public sealed class Player : Component
 
         if ( Controller == null ) return;
 
-        var wishVelocity = Input.AnalogMove.Normal * WalkSpeed;
+        var wishVelocity = Input.AnalogMove.Normal * (WalkSpeed);
 
         Controller.Accelerate( wishVelocity );
 
 		Controller.ApplyFriction( 2f );
 
 		Controller.Move();
+
+		GameObject.Transform.Position = new Vector3( Transform.Position.x, Transform.Position.y, 0 );
+
 		if ( _lastBite > BiteDelay ) Bite();
 
 		_velocity = Transform.Position - _lastPos;
@@ -130,6 +133,7 @@ public sealed class Player : Component
 		Size += amount;
 		BiteDamage += amount;
 		Transform.Scale = Size;
+		Scene.Camera.Transform.LocalPosition = new Vector3(0,0,1000/Size);
 	}
 
 	public void TurnAround()

@@ -13,7 +13,7 @@ public sealed class SpawnOutsideFOV : Component
 	
 	protected override void OnUpdate()
 	{
-		if ( GameObject.Children.Count() > 25 ) { return; }
+		if ( GameObject.Children.Count() >= 25 ) { return; }
 
 		GameObject SpawnThis = Fish1.Clone( RandomOutsideFOV() );
 		GameObject.Children.Add(SpawnThis);
@@ -31,7 +31,6 @@ public sealed class SpawnOutsideFOV : Component
 	{
 		Vector3 random = new Random().VectorInCircle(1000);
 		Vector3 target = random;
-		Log.Info(target);
 		// Get a direction vector from the scene camera to target
 		Vector3 direction = (target - Scene.Camera.Transform.Position).Normal;
 		// Will be a number from -1 to 1

@@ -31,12 +31,18 @@ public sealed class Fish : Component
 
 		if ( Controller == null ) return;
 
-
-		Controller.Accelerate( SetRandomness() );
+		if (GameObject.Transform.Position.Distance(new Vector3(0,0,0)) < 1000) {
+			Controller.Accelerate( SetRandomness() );
+		}else
+		{
+			Controller.Accelerate( ReturnToCenter() );
+		}
 
 		Controller.ApplyFriction( 0.5f );
 
 		Controller.Move();
+
+		GameObject.Transform.Position = new Vector3( Transform.Position.x, Transform.Position.y, 0 );
 
 		GameObject.Transform.LocalScale = 1f + (UnitInfo.MaxHealth/5);
 	}
@@ -48,6 +54,13 @@ public sealed class Fish : Component
 			_travelDirection = new Vector3( new Random().Float( -WalkSpeed, WalkSpeed ), new Random().Float( -WalkSpeed, WalkSpeed ), 0f );
 
 		}
+		return _travelDirection;
+	}
+
+	public Vector3 ReturnToCenter()
+	{
+		_travelDirection = -GameObject.Transform.Position.ClampLength(50);
+
 		return _travelDirection;
 	}
 }
