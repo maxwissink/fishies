@@ -1,0 +1,64 @@
+{
+  "RootObject": {
+    "Id": "e8c220cb-1124-423e-b24e-111e657a2617",
+    "Name": "fish",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "CharacterController",
+        "Acceleration": 10,
+        "Bounciness": 0,
+        "GroundAngle": 45,
+        "Height": 10.4,
+        "IgnoreLayers": "",
+        "Radius": 2.4,
+        "StepHeight": 18
+      },
+      {
+        "__type": "CapsuleCollider",
+        "End": "15.59999,0,0",
+        "IsTrigger": false,
+        "Radius": 5.959999,
+        "Start": "-17.59999,0,0",
+        "Static": false,
+        "Surface": null
+      },
+      {
+        "__type": "UnitInfo",
+        "MaxHealth": 1,
+        "Team": "Fish"
+      },
+      {
+        "__type": "Fish",
+        "Controller": {
+          "_type": "component",
+          "go": "e8c220cb-1124-423e-b24e-111e657a2617",
+          "component_type": "CharacterController"
+        },
+        "Randomness": 0.5,
+        "UnitInfo": {
+          "_type": "component",
+          "go": "e8c220cb-1124-423e-b24e-111e657a2617",
+          "component_type": "UnitInfo"
+        },
+        "WalkSpeed": 50
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "fish.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": [
+    "plazmium.fish"
+  ]
+}

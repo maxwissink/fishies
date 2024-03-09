@@ -1,0 +1,226 @@
+{
+  "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
+  "GameObjects": [
+    {
+      "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "Name": "Sun",
+      "Rotation": "0.1257573,0.8858284,-0.06277905,0.4422124",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLight",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.66977,0.66977,0.66977,1",
+          "Shadows": true,
+          "SkyColor": "0,0.2338,0.48372,1"
+        }
+      ]
+    },
+    {
+      "Id": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "Name": "2D Skybox",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SkyBox2D",
+          "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "EnvmapProbe",
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "Feathering": 0.02,
+          "Projection": "Sphere",
+          "Texture": "textures/cubemaps/default2.vtex",
+          "TintColor": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+      "Name": "Plane",
+      "Position": "0,0,-100",
+      "Scale": "50,50,5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "On",
+          "Tint": "0.39546,0.51163,0.27128,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "Center": "0,0,-5",
+          "IsTrigger": false,
+          "Scale": "100,100,10",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "24d23fa7-7363-475a-a0e3-143225d04466",
+      "Name": "player",
+      "Position": "72.99903,139.4572,0",
+      "Enabled": true,
+      "__Prefab": "prefabs/player.prefab"
+    },
+    {
+      "Id": "7936f8be-5227-4f9d-b93a-3f77eea27104",
+      "Name": "fish (1)",
+      "Position": "131.3137,-113.1083,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "abbabd80-d46b-417b-9904-90c291685c05",
+      "Name": "fish (2)",
+      "Position": "24.54066,-97.25134,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "7de71bf7-5a41-4c36-8484-0dfe83024b14",
+      "Name": "fish (3)",
+      "Position": "162.5891,88.90688,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "6bbb2a62-8f61-4288-8db3-6cee364f2d88",
+      "Name": "fish (4)",
+      "Position": "-126.8187,-118.9294,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "65df4c65-0ed2-4cee-9c0e-1b82c8531b43",
+      "Name": "fish (5)",
+      "Position": "302.0686,270.7999,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "683338bb-7044-459e-b5c5-2ffe0516809f",
+      "Name": "fish (6)",
+      "Position": "-148.1063,252.4883,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "8c850514-4239-4e61-ab3c-f854c40a2002",
+      "Name": "fish (7)",
+      "Position": "-57.11724,427.8618,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "8e9b9749-e391-49b3-beb2-bbf66540809b",
+      "Name": "fish (8)",
+      "Position": "79.99001,454.2465,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "14e97c00-7600-445f-b53c-70851d66cd38",
+      "Name": "fish (9)",
+      "Position": "227.7943,456.3544,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "91e96b64-08ff-4b53-8448-217d213c3bc5",
+      "Name": "fish (10)",
+      "Position": "-164.8519,50.35273,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "f23a9a96-ebbc-42db-be8c-fed1c53b1846",
+      "Name": "fish (11)",
+      "Position": "287.651,-248.6364,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "9f7ebce4-8e54-4bd3-9acf-1d3a294885c7",
+      "Name": "fish (12)",
+      "Position": "401.1972,14.66698,0",
+      "Rotation": "-0.5000001,0.5000001,-0.5,0.5000002",
+      "Tags": "fish",
+      "Enabled": true,
+      "__Prefab": "prefabs/fish.prefab"
+    },
+    {
+      "Id": "ca824f34-d953-478a-b738-0d430ffef48d",
+      "Name": "FishSpawner",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpawnOutsideFOV",
+          "Fish1": {
+            "_type": "gameobject",
+            "prefab": "prefabs/fish.prefab"
+          }
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "minimal",
+  "Description": "",
+  "LastSaved": "2024-03-09T15:49:07.5121248\u002B01:00",
+  "__references": []
+}

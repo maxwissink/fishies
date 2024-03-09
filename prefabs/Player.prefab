@@ -1,0 +1,120 @@
+{
+  "RootObject": {
+    "Id": "cac15fbc-4323-4cf7-8257-f5d638448e8c",
+    "Name": "player",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "CharacterController",
+        "Acceleration": 10,
+        "Bounciness": 0,
+        "GroundAngle": 0,
+        "Height": 6.240001,
+        "IgnoreLayers": "",
+        "Radius": 7.2,
+        "StepHeight": 0
+      },
+      {
+        "__type": "Player",
+        "BiteDamage": 1,
+        "BiteDelay": 1,
+        "BiteRange": 11,
+        "Camera": {
+          "_type": "gameobject",
+          "go": "06e32c1f-ac68-407c-aa7c-b8e1f3672f56"
+        },
+        "Controller": {
+          "_type": "component",
+          "go": "cac15fbc-4323-4cf7-8257-f5d638448e8c",
+          "component_type": "CharacterController"
+        },
+        "MouthPosition": "0.48,-25.19998,0",
+        "RunSpeed": 250,
+        "Size": 1,
+        "WalkSpeed": 120
+      },
+      {
+        "__type": "UnitInfo",
+        "__enabled": false,
+        "MaxHealth": 4.7,
+        "Team": "Player"
+      },
+      {
+        "__type": "BoxCollider",
+        "__enabled": false,
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Scale": "12.43998,41.56,6.039938",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": [
+      {
+        "Id": "ed907ba9-b536-47e7-9766-2aab29b79129",
+        "Name": "fish",
+        "Rotation": "0.5,0.5000001,0.5,0.4999999",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "AnimationGraph": null,
+            "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": null,
+            "CreateBoneObjects": false,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Model": "models/fishing/fishing.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "UnitInfo",
+            "MaxHealth": 5,
+            "Team": "Player"
+          },
+          {
+            "__type": "BoxCollider",
+            "Center": "-2.32,-1.520001,0.88",
+            "IsTrigger": false,
+            "Scale": "43.48008,9.399986,12.11993",
+            "Static": false,
+            "Surface": null
+          }
+        ]
+      },
+      {
+        "Id": "06e32c1f-ac68-407c-aa7c-b8e1f3672f56",
+        "Name": "Camera",
+        "Position": "0,0,500",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Tags": "maincamera",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "CameraComponent",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 60,
+            "IsMainCamera": true,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": [
+    "kapidranik.fish_anton"
+  ]
+}
