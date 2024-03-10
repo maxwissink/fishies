@@ -1,5 +1,6 @@
 using Sandbox.Utility;
 using System;
+using System.Timers;
 
 public sealed class Fish : Component
 {
@@ -15,6 +16,9 @@ public sealed class Fish : Component
 	[Property]
 	[Category( "Components" )]
 	public CharacterController Controller { get; set; }
+	[Property]
+	[Category("Components")]
+	public GameObject particleEffect { get; set; }
 	[Property]
 	[Category( "Stats" )]
 	[Range( 0f, 400f, 1f )]
@@ -120,6 +124,7 @@ public sealed class Fish : Component
 			if ( biteTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
 			{
 				if ( unitInfo.Components.Get<Fish>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
+				if ( unitInfo.GameObject.Parent.Components.Get<Player>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
 				_travelDirection = unitInfo.Transform.Position - Transform.Position;
 			}
 		}
@@ -150,7 +155,9 @@ public sealed class Fish : Component
 			if ( biteTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
 			{
 				if (unitInfo.Components.Get<Fish>()?.Size > Size) return; //check if target is bigger and if bigger dont bite
+				if ( unitInfo.GameObject.Parent.Components.Get<Player>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
 				unitInfo.Damage( BiteDamage );
+				BleedTarget( unitInfo.Transform.Position );
 				if ( unitInfo.IsDead )
 				{
 					Kills += unitInfo.Points;
@@ -161,6 +168,11 @@ public sealed class Fish : Component
 			}
 		}
 
+	}
+
+	public void BleedTarget(Vector3 position)
+	{
+		particleEffect.Clone(position).Transform.Rotation = new Angles( Vector3.GetAngle(position, Transform.Position),0, 0);
 	}
 
 	public void Grow( float amount = 0.1f )

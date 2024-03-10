@@ -29,6 +29,10 @@
           "component_type": "CharacterController"
         },
         "MouthPosition": "-1.6,-23.83999,0",
+        "particleEffect": {
+          "_type": "gameobject",
+          "prefab": "prefabs/blood.prefab"
+        },
         "RunSpeed": 250,
         "Size": 1,
         "WalkSpeed": 120
@@ -51,6 +55,10 @@
           },
           {
             "__type": "UnitInfo",
+            "DeathParticles": {
+              "_type": "gameobject",
+              "prefab": "prefabs/death.prefab"
+            },
             "Health": 5,
             "Points": 1,
             "Team": "Player"
@@ -61,6 +69,181 @@
             "IsTrigger": false,
             "Scale": "43.48008,9.399986,12.11993",
             "Static": false
+          }
+        ],
+        "Children": [
+          {
+            "Id": "4675e19c-9986-4850-9b4a-66a2926ffcf7",
+            "Name": "Spray",
+            "Tags": "particles",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "ParticleEffect",
+                "Alpha": {
+                  "Type": "Curve",
+                  "CurveA": [
+                    {
+                      "y": 1
+                    },
+                    {
+                      "y": 0.9946808,
+                      "in": 1.5365853,
+                      "out": -1.5365853
+                    },
+                    {
+                      "x": 0.18154761,
+                      "y": 0.24193752,
+                      "in": 0.7212598,
+                      "out": -0.7212598
+                    },
+                    {
+                      "x": 1,
+                      "in": -0.035087608,
+                      "out": 0.035087608
+                    }
+                  ],
+                  "Constants": "1,0,0,0"
+                },
+                "ApplyColor": true,
+                "ApplyRotation": false,
+                "ApplyShape": true,
+                "Bounce": {
+                  "Constants": "1,0,0,0"
+                },
+                "Brightness": {
+                  "Constants": "1,0,0,0"
+                },
+                "Bumpiness": {},
+                "Collision": false,
+                "CollisionRadius": 1,
+                "Damping": {
+                  "Constants": "2,0,0,0"
+                },
+                "DieOnCollisionChance": {},
+                "Force": false,
+                "ForceDirection": "0,0,-200",
+                "ForceScale": {
+                  "Constants": "1,0,0,0"
+                },
+                "Friction": {
+                  "Constants": "1,0,0,0"
+                },
+                "Gradient": {
+                  "Type": "Range",
+                  "Evaluation": "Particle",
+                  "GradientA": {
+                    "color": [
+                      {
+                        "t": 0.5,
+                        "c": "1,1,1,1"
+                      }
+                    ],
+                    "alpha": []
+                  },
+                  "GradientB": {
+                    "color": [
+                      {
+                        "t": 0.5,
+                        "c": "1,1,1,1"
+                      }
+                    ],
+                    "alpha": []
+                  },
+                  "ConstantA": "0.98515,0.92604,0,1",
+                  "ConstantB": "1,0.22,0,1"
+                },
+                "Lifetime": {
+                  "Type": "Range",
+                  "Evaluation": "Particle",
+                  "Constants": "0,1,0,0"
+                },
+                "MaxParticles": 5000,
+                "PerParticleTimeScale": {
+                  "Constants": "1,0.4,0,0"
+                },
+                "PreWarm": 0,
+                "PushStrength": {},
+                "Roll": {
+                  "Type": "Range",
+                  "Evaluation": "Particle"
+                },
+                "Scale": {
+                  "Type": "Curve",
+                  "CurveA": {
+                    "rangey": "0,3",
+                    "frames": [
+                      {
+                        "in": -9.333329,
+                        "out": 9.333329
+                      },
+                      {
+                        "x": 0.03325123,
+                        "y": 1,
+                        "in": -0.056075174,
+                        "out": 0.056075174
+                      },
+                      {
+                        "x": 1,
+                        "in": 2.9152544,
+                        "out": -2.9152544
+                      }
+                    ]
+                  },
+                  "Constants": "1,0,0,0"
+                },
+                "SequenceId": {},
+                "SequenceSpeed": {
+                  "Constants": "1,0,0,0"
+                },
+                "SequenceTime": {
+                  "Constants": "1,0,0,0"
+                },
+                "SheetSequence": false,
+                "Space": "Local",
+                "StartVelocity": {
+                  "Type": "Range",
+                  "Evaluation": "Particle",
+                  "Constants": "1,100,0,0"
+                },
+                "Stretch": {},
+                "TimeScale": 1,
+                "Tint": "1,0,0,1"
+              },
+              {
+                "__type": "ParticleSpriteRenderer",
+                "Additive": false,
+                "BlurAmount": 0.5,
+                "BlurOpacity": 0.91,
+                "BlurSpacing": 0.73,
+                "DepthFeather": 0,
+                "FaceVelocity": false,
+                "FogStrength": 1,
+                "LeadingTrail": true,
+                "MotionBlur": false,
+                "Opaque": false,
+                "RotationOffset": 0,
+                "Scale": 1,
+                "Shadows": false,
+                "SortMode": "Unsorted",
+                "Texture": "materials/particles/cache_ground_ripple.vtex"
+              },
+              {
+                "__type": "ParticleConeEmitter",
+                "__enabled": false,
+                "Burst": 0,
+                "ConeAngle": 45,
+                "ConeFar": 10,
+                "ConeNear": 1,
+                "Delay": 0,
+                "DestroyOnEnd": true,
+                "Duration": 1,
+                "InVolume": false,
+                "Loop": false,
+                "OnEdge": false,
+                "Rate": 500
+              }
+            ]
           }
         ]
       },

@@ -1,7 +1,8 @@
 {
   "RootObject": {
-    "Id": "1b3499e3-679c-4328-8361-5183cbb01967",
+    "Id": "75b83846-179c-44e8-81b3-a900a29d0da3",
     "Name": "fish",
+    "Tags": "particles",
     "Enabled": true,
     "Components": [
       {
@@ -24,6 +25,10 @@
       },
       {
         "__type": "UnitInfo",
+        "DeathParticles": {
+          "_type": "gameobject",
+          "prefab": "prefabs/death.prefab"
+        },
         "Health": 1,
         "Points": 1,
         "Team": "Fish"
@@ -35,16 +40,20 @@
         "BiteRange": 9,
         "Controller": {
           "_type": "component",
-          "go": "1b3499e3-679c-4328-8361-5183cbb01967",
+          "go": "75b83846-179c-44e8-81b3-a900a29d0da3",
           "component_type": "CharacterController"
         },
         "MouthPosition": "20,0,0",
+        "particleEffect": {
+          "_type": "gameobject",
+          "prefab": "prefabs/blood.prefab"
+        },
         "Randomness": 0.5,
         "Size": 1,
         "SmellRange": 50,
         "UnitInfo": {
           "_type": "component",
-          "go": "1b3499e3-679c-4328-8361-5183cbb01967",
+          "go": "75b83846-179c-44e8-81b3-a900a29d0da3",
           "component_type": "UnitInfo"
         },
         "WalkSpeed": 50

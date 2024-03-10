@@ -1,3 +1,4 @@
+using Sandbox;
 using Sandbox.Utility;
 using System;
 
@@ -15,10 +16,13 @@ public sealed class Player : Component
     [Property]
     [Category("Components")]
     public CharacterController Controller {get;set;}
-    /// <summary>
-    /// Sets the default walk speed (units per second)
-    /// </summary>
-    [Property]
+	[Property]
+	[Category( "Components" )]
+	public GameObject particleEffect { get; set; }
+	/// <summary>
+	/// Sets the default walk speed (units per second)
+	/// </summary>
+	[Property]
     [Category("Stats")]
     [Range( 0f, 400f, 1f)]
     public float WalkSpeed {get;set;} = 120f;
@@ -117,16 +121,23 @@ public sealed class Player : Component
 			if ( biteTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
 			{
 				unitInfo.Damage( BiteDamage );
-				Log.Info( "biting fish with " + unitInfo.Health + " left" );
+				BleedTarget( unitInfo.Transform.Position );
 				if ( unitInfo.IsDead )
 				{
 					Kills += unitInfo.Points;
+					GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Damage( -1 );
+					Log.Info( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health );
 					Grow( 0.1f );
 				}
 				_lastBite = 0f;
 			}
 		}
 
+	}
+
+	public void BleedTarget( Vector3 position )
+	{
+		particleEffect.Clone(  position );
 	}
 
 	public void Grow( float amount = 0.1f )

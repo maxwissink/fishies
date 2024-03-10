@@ -18,6 +18,8 @@ public sealed class UnitInfo : Component
 	/// </summary>
 	[Property]
 	public UnitType Team { get; set; }
+	[Property]
+	public GameObject DeathParticles { get; set; }
 	/// <summary>
 	/// Sets the starting amount of hp the unit has
 	/// </summary>
@@ -70,7 +72,11 @@ public sealed class UnitInfo : Component
 
 		OnDamage?.Invoke(damage);
 
-		if (Health <= 0f ) { Kill(); }
+		if (Health <= 0f ) { Kill(); return; }
+		if (damage > 0)
+		{
+			Sound.Play( new SoundEvent( "sounds/physics/props/flesh_bloody/shake_0" + new Random().Next(1,8) + ".vsnd_c" ), Transform.Position );
+		}
 	}
 
 	/// <summary>
@@ -80,6 +86,8 @@ public sealed class UnitInfo : Component
 	{
 		Health = 0f;
 		IsDead = true;
+		DeathParticles.Clone(Transform.Position);
+		Sound.Play(new SoundEvent( "sounds/physics/props/flesh_bloody/impact_c_0" + new Random().Next(1,4) + ".vsnd_c" ), Transform.Position );
 
 		OnDeath?.Invoke(GameObject);
 
