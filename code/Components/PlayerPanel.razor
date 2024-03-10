@@ -1,0 +1,32 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+    <div class="health">
+        <div class="healthColored" style="right:@(400 - (400/_maxHealth*_health));"></div>
+        @_health/@_maxHealth
+    </div>
+</root>
+
+@code
+{
+
+    [Property]
+    public UnitInfo unitInfo { get; set; }
+
+    private int _health;
+    private int _maxHealth = 0;
+
+    protected override void OnUpdate()
+    {
+        _health = ((int)unitInfo.Health);
+
+        if (_maxHealth < _health) _maxHealth = _health;
+    }
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( _health, _maxHealth );
+}

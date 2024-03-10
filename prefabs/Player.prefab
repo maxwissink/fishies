@@ -73,6 +73,31 @@
         ]
       },
       {
+        "Id": "9fd31b6c-e55d-49c5-90bd-1dd3785b318a",
+        "Name": "World",
+        "Position": "-20,0,0",
+        "Rotation": "0,-0.7071068,0,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "WorldPanel",
+            "HorizontalAlign": "Center",
+            "LookAtCamera": true,
+            "PanelSize": "1000,200",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "PlayerPanel",
+            "unitInfo": {
+              "_type": "component",
+              "go": "ed907ba9-b536-47e7-9766-2aab29b79129",
+              "component_type": "UnitInfo"
+            }
+          }
+        ]
+      },
+      {
         "Id": "06e32c1f-ac68-407c-aa7c-b8e1f3672f56",
         "Name": "Camera",
         "Position": "0,0,1000",

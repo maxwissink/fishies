@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "75b83846-179c-44e8-81b3-a900a29d0da3",
+    "Id": "65873da5-fb89-4b3d-979c-dc99bbd7cfce",
     "Name": "fish",
     "Tags": "particles",
     "Enabled": true,
@@ -40,7 +40,7 @@
         "BiteRange": 9,
         "Controller": {
           "_type": "component",
-          "go": "75b83846-179c-44e8-81b3-a900a29d0da3",
+          "go": "65873da5-fb89-4b3d-979c-dc99bbd7cfce",
           "component_type": "CharacterController"
         },
         "MouthPosition": "20,0,0",
@@ -53,7 +53,7 @@
         "SmellRange": 50,
         "UnitInfo": {
           "_type": "component",
-          "go": "75b83846-179c-44e8-81b3-a900a29d0da3",
+          "go": "65873da5-fb89-4b3d-979c-dc99bbd7cfce",
           "component_type": "UnitInfo"
         },
         "WalkSpeed": 50
@@ -66,7 +66,33 @@
         "Tint": "1,1,1,1"
       }
     ],
-    "Children": []
+    "Children": [
+      {
+        "Id": "31ac10ae-9611-4602-9430-e9e374ef095e",
+        "Name": "World",
+        "Position": "0,0,-20",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "WorldPanel",
+            "HorizontalAlign": "Center",
+            "LookAtCamera": true,
+            "PanelSize": "1000,200",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "PlayerPanel",
+            "unitInfo": {
+              "_type": "component",
+              "go": "65873da5-fb89-4b3d-979c-dc99bbd7cfce",
+              "component_type": "UnitInfo"
+            }
+          }
+        ]
+      }
+    ]
   },
   "ShowInMenu": false,
   "MenuPath": null,
