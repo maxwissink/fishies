@@ -2,17 +2,36 @@
 @using Sandbox.UI;
 @inherits PanelComponent
 
-<root class="@(_paused ? "" : "hide")">
-	<div class="pauseMenu">
+<root class="@((_paused||_gameOver) ? "" : "hide")">
+    <div class="pauseMenu @(_gameOver ? "hide" : "")">
         <h1>Fishies</h1>
         <div class="button play" onclick=@onPaused>Play</div>
+        <div class="button restart" onclick=@onRestart>Restart</div>
+        <div class="button quit" onclick=@onQuit>Quit</div>
+    </div>
+    <div class="gameOverMenu @(_gameOver ? "" : "hide")">
+        <h1>Fishies</h1>
+        <h2>Game over</h2>
+        <p>Your score: @_score</p>
+        <div class="button restart" onclick=@onRestart>Restart</div>
         <div class="button quit" onclick=@onQuit>Quit</div>
     </div>
 </root>
 
 @code
 {
+    [Property]
+    public GameObject Player { get; set; }
+
     private bool _paused = true;
+    private bool _gameOver = false;
+    private int _score;
+    private GameResource _savestate;
+
+    protected override void OnStart()
+    {
+        _savestate = Scene.Save();
+    }
 
     protected override void OnUpdate()
     {
@@ -23,7 +42,10 @@
             _paused = !_paused;
         }
 
-        Scene.TimeScale = _paused ? 0 : 1;
+        _score = Player.Components.Get<Player>().Kills;
+        _gameOver = !Player.Children.FirstOrDefault().Components.Get<UnitInfo>().IsValid();
+
+        Scene.TimeScale = (_paused||_gameOver) ? 0 : 1;
     }
 
     void onPaused()
@@ -36,6 +58,11 @@
         Game.Close();
     }
 
+    void onRestart()
+    {
+        Scene.Load(_savestate);
+    }
 
-    protected override int BuildHash() => System.HashCode.Combine( _paused );
+
+    protected override int BuildHash() => System.HashCode.Combine(_paused, _gameOver, _score);
 }
