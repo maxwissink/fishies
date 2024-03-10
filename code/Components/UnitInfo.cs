@@ -24,6 +24,11 @@ public sealed class UnitInfo : Component
 	[Property]
 	[Range( 0.1f, 10f, 0.1f )]
 	public float MaxHealth { get; set; } = 5f;
+	/// <summary>
+	/// Sets the amount of points that the unit is worth on kill
+	/// </summary>
+	[Property]
+	public int Points { get; set; } = 1;
 
 	public float Health { get; private set; }
 	public bool IsDead { get; set; } = false;

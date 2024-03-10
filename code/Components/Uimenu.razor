@@ -1,0 +1,41 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root class="@(_paused ? "" : "hide")">
+	<div class="pauseMenu">
+        <h1>Fishies</h1>
+        <div class="button play" onclick=@onPaused>Play</div>
+        <div class="button quit" onclick=@onQuit>Quit</div>
+    </div>
+</root>
+
+@code
+{
+    private bool _paused = true;
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (Input.EscapePressed)
+        {
+            _paused = !_paused;
+        }
+
+        Scene.TimeScale = _paused ? 0 : 1;
+    }
+
+    void onPaused()
+    {
+        _paused = !_paused;
+    }
+
+    void onQuit()
+    {
+        Game.Close();
+    }
+
+
+    protected override int BuildHash() => System.HashCode.Combine( _paused );
+}

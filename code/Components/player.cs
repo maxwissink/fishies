@@ -53,8 +53,9 @@ public sealed class Player : Component
 	public float Size { get; set; } = 1f;
 
 	public Vector3 MouthWorldPosition => Transform.Local.PointToWorld( MouthPosition );
+	public int Kills { get; set; } = 0;
+	
 	TimeSince _lastBite;
-
 	Vector3 _lastPos = new Vector3( 0f, 0f, 0f );
 	Vector3 _velocity = new Vector3( 0f, 0f, 0f );
 
@@ -120,6 +121,7 @@ public sealed class Player : Component
 				unitInfo.Damage( BiteDamage );
 				if ( unitInfo.IsDead )
 				{
+					Kills += unitInfo.Points;
 					Grow( unitInfo.MaxHealth / 10 );
 				}
 				_lastBite = 0f;
