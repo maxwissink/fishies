@@ -23,8 +23,47 @@ public sealed class Fish : Component
 	[Category("Stats")]
 	[Range(0.1f, 1f, 0.1f)]
 	public float Randomness { get; set; } = 1f;
+	[Property]
+	[Category( "Stats" )]
+	[Range( 1f, 50f, 1f )]
+	public float BiteRange { get; set; } = 25f;
+	/// <summary>
+	/// The damage every bite deals
+	/// </summary>
+	[Property]
+	[Category( "Stats" )]
+	[Range( 0.5f, 5f, 0.5f )]
+	public float BiteDamage { get; set; } = 1f;
+	[Property]
+	[Category( "Components" )]
+	public Vector3 MouthPosition { get; set; }
+	Vector3 _MoutPosReal = new Vector3( 0f, 0f, 0f );
+	[Property]
+	[Category( "Stats" )]
+	[Range( 0.1f, 3f, 0.1f )]
+	public float BiteDelay { get; set; } = 1f;
+	[Property]
+	[Category( "Stats" )]
+	public float Size { get; set; } = 1f;
+	[Property]
+	[Category( "Stats" )]
+	public int SmellRange { get; set; } = 50;
+
+	public Vector3 MouthWorldPosition => Transform.Local.PointToWorld( MouthPosition );
+	public int Kills { get; set; } = 0;
+
+	TimeSince _lastBite;
+	Vector3 _lastPos = new Vector3( 0f, 0f, 0f );
+	Vector3 _velocity = new Vector3( 0f, 0f, 0f );
 
 	Vector3 _travelDirection = new Vector3( new Random().Float( -50f, 50f ), new Random().Float( -50f, 50f ), 0f );
+
+
+	protected override void OnStart()
+	{
+		_MoutPosReal = MouthPosition;
+		base.OnStart();
+	}
 
 	protected override void OnFixedUpdate()
 	{
@@ -44,7 +83,11 @@ public sealed class Fish : Component
 
 		GameObject.Transform.Position = new Vector3( Transform.Position.x, Transform.Position.y, 0 );
 
-		GameObject.Transform.LocalScale = 1f + (UnitInfo.MaxHealth/5);
+		if ( _lastBite > BiteDelay ) Bite();
+		SmellSmaller();
+
+		_velocity = Transform.Position - _lastPos;
+		_lastPos = Transform.Position;
 	}
 
 	public Vector3 SetRandomness()
@@ -62,5 +105,80 @@ public sealed class Fish : Component
 		_travelDirection = -GameObject.Transform.Position.ClampLength(50);
 
 		return _travelDirection;
+	}
+
+	public void SmellSmaller()
+	{
+		var biteTrace = Scene.Trace
+			.Sphere( SmellRange * Size, Transform.Position, Transform.Position )
+			.WithoutTags( "player" )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Run();
+
+		if ( biteTrace.Hit )
+		{
+			if ( biteTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
+			{
+				if ( unitInfo.Components.Get<Fish>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
+				_travelDirection = unitInfo.Transform.Position - Transform.Position;
+			}
+		}
+	}
+
+	protected override void DrawGizmos()
+	{
+
+		Gizmo.Draw.LineSphere( MouthPosition, BiteRange );
+		Gizmo.Draw.LineSphere( new Vector3(0,0,0), SmellRange );
+
+		if ( !Gizmo.IsSelected ) return;
+		base.DrawGizmos();
+
+		Gizmo.Draw.LineSphere( MouthPosition, BiteRange );
+	}
+
+	public void Bite()
+	{
+		var biteTrace = Scene.Trace
+			.Sphere( BiteRange * Size, MouthWorldPosition, MouthWorldPosition )
+			.WithoutTags( "player" )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Run();
+
+		if ( biteTrace.Hit )
+		{
+			if ( biteTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
+			{
+				if (unitInfo.Components.Get<Fish>()?.Size > Size) return; //check if target is bigger and if bigger dont bite
+				unitInfo.Damage( BiteDamage );
+				if ( unitInfo.IsDead )
+				{
+					Kills += unitInfo.Points;
+					UnitInfo.Damage( -1 );
+					Grow( 0.1f );
+				}
+				_lastBite = 0f;
+			}
+		}
+
+	}
+
+	public void Grow( float amount = 0.1f )
+	{
+		Size += amount;
+		BiteDamage += amount;
+		Transform.Scale = Size;
+	}
+
+	public void TurnAround()
+	{
+		if ( _velocity.y > 0f )
+		{
+			MouthPosition = new Vector3( -_MoutPosReal.x, _MoutPosReal.y, _MoutPosReal.z );
+		}
+		else if ( _velocity.y < 0f )
+		{
+			MouthPosition = new Vector3( _MoutPosReal.x, _MoutPosReal.y, _MoutPosReal.z );
+		}
 	}
 }

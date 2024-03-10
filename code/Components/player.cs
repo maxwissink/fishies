@@ -55,7 +55,7 @@ public sealed class Player : Component
 	public Vector3 MouthWorldPosition => Transform.Local.PointToWorld( MouthPosition );
 	public int Kills { get; set; } = 0;
 	
-	TimeSince _lastBite;
+	private TimeSince _lastBite;
 	Vector3 _lastPos = new Vector3( 0f, 0f, 0f );
 	Vector3 _velocity = new Vector3( 0f, 0f, 0f );
 
@@ -116,13 +116,12 @@ public sealed class Player : Component
 		{
 			if ( biteTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
 			{
-
-				Log.Info( "Biting fish!" );
 				unitInfo.Damage( BiteDamage );
+				Log.Info( "biting fish with " + unitInfo.Health + " left" );
 				if ( unitInfo.IsDead )
 				{
 					Kills += unitInfo.Points;
-					Grow( unitInfo.MaxHealth / 10 );
+					Grow( 0.1f );
 				}
 				_lastBite = 0f;
 			}

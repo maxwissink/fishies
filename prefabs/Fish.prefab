@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "527626d7-8760-488d-9f4d-a267430faf76",
+    "Id": "1b3499e3-679c-4328-8361-5183cbb01967",
     "Name": "fish",
     "Enabled": true,
     "Components": [
@@ -20,25 +20,31 @@
         "IsTrigger": false,
         "Radius": 5.959999,
         "Start": "-17.59999,0,0",
-        "Static": false,
-        "Surface": null
+        "Static": false
       },
       {
         "__type": "UnitInfo",
-        "MaxHealth": 1,
+        "Health": 1,
+        "Points": 1,
         "Team": "Fish"
       },
       {
         "__type": "Fish",
+        "BiteDamage": 1,
+        "BiteDelay": 1,
+        "BiteRange": 9,
         "Controller": {
           "_type": "component",
-          "go": "527626d7-8760-488d-9f4d-a267430faf76",
+          "go": "1b3499e3-679c-4328-8361-5183cbb01967",
           "component_type": "CharacterController"
         },
+        "MouthPosition": "20,0,0",
         "Randomness": 0.5,
+        "Size": 1,
+        "SmellRange": 50,
         "UnitInfo": {
           "_type": "component",
-          "go": "527626d7-8760-488d-9f4d-a267430faf76",
+          "go": "1b3499e3-679c-4328-8361-5183cbb01967",
           "component_type": "UnitInfo"
         },
         "WalkSpeed": 50
@@ -46,8 +52,6 @@
       {
         "__type": "ModelRenderer",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "fish.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"

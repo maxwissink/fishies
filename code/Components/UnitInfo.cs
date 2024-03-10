@@ -19,18 +19,17 @@ public sealed class UnitInfo : Component
 	[Property]
 	public UnitType Team { get; set; }
 	/// <summary>
-	/// Sets the maximum amount of hp the unit has
+	/// Sets the starting amount of hp the unit has
 	/// </summary>
 	[Property]
 	[Range( 0.1f, 10f, 0.1f )]
-	public float MaxHealth { get; set; } = 5f;
+	public float Health { get; set; } = 5f;
 	/// <summary>
 	/// Sets the amount of points that the unit is worth on kill
 	/// </summary>
 	[Property]
 	public int Points { get; set; } = 1;
 
-	public float Health { get; private set; }
 	public bool IsDead { get; set; } = false;
 
 	public event Action<float> OnDamage;
@@ -56,7 +55,7 @@ public sealed class UnitInfo : Component
 
 	protected override void OnStart()
 	{
-		Health = MaxHealth;
+		
 	}
 
 	/// <summary>
@@ -67,7 +66,7 @@ public sealed class UnitInfo : Component
 	{
 		if ( IsDead ) { return; }
 
-		Health = Math.Clamp( Health - damage, 0f, MaxHealth );
+		Health -= damage;
 
 		OnDamage?.Invoke(damage);
 
