@@ -81,11 +81,13 @@
 
     void onQuit()
     {
+        Sandbox.Services.Stats.SetValue("score", Player.Components.Get<Player>().Kills);
         Game.Close();
     }
 
     void onRestart()
     {
+        Sandbox.Services.Stats.SetValue("score", Player.Components.Get<Player>().Kills);
         Scene.Load(_savestate);
     }
 
