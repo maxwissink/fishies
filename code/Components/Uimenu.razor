@@ -31,6 +31,7 @@
     protected override void OnStart()
     {
         _savestate = Scene.Save();
+        Player.Children.FirstOrDefault().Components.Get<UnitInfo>().OnDeath += onDeath;
     }
 
     protected override void OnUpdate()
@@ -46,6 +47,12 @@
         _gameOver = !Player.Children.FirstOrDefault().Components.Get<UnitInfo>().IsValid();
 
         Scene.TimeScale = (_paused||_gameOver) ? 0 : 1;
+    }
+
+    void onDeath(GameObject gameObject)
+    {
+        Log.Info("updated leaderboard score");
+        Sandbox.Services.Stats.SetValue("score", Player.Components.Get<Player>().Kills);
     }
 
     void onPaused()
