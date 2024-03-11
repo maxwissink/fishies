@@ -45,7 +45,7 @@ public sealed class UnitInfo : Component
 
 	protected override void OnUpdate()
 	{
-
+		Points = GameObject.Transform.Scale.x.CeilToInt();
 	}
 
 	protected override void OnFixedUpdate()
@@ -92,7 +92,7 @@ public sealed class UnitInfo : Component
 
 		OnDeath?.Invoke(GameObject);
 
-		GameObject.DestroyImmediate();
+		GameObject.Destroy();
 	}
 	
 	public void TurnAround()

@@ -127,9 +127,10 @@ public sealed class Player : Component
 				{
 					Kills += unitInfo.Points;
 					Sandbox.Services.Stats.Increment("score", unitInfo.Points);
-					GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Damage( -1 );
+					GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Damage( -unitInfo.Points );
 					if ( _maxHealth < GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health ) _maxHealth = GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health;
-					if ( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health == _maxHealth ) Grow( 0.1f ); ;
+					Log.Info("Growing player by " + (float)unitInfo.Points / 10 );
+					if ( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health == _maxHealth ) Grow( (float)unitInfo.Points/10 ); ;
 				}
 				_lastBite = 0f;
 			}

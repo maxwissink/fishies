@@ -163,9 +163,9 @@ public sealed class Fish : Component
 				if ( unitInfo.IsDead )
 				{
 					Kills += unitInfo.Points;
-					UnitInfo.Damage( -1 );
+					UnitInfo.Damage( -unitInfo.Points );
 					if ( _maxHealth < UnitInfo.Health ) _maxHealth = UnitInfo.Health;
-					if ( UnitInfo.Health == _maxHealth ) Grow( 0.1f );
+					if ( UnitInfo.Health == _maxHealth ) Grow( unitInfo.Components.Get<Fish>()?.Size/10 );
 				}
 				_lastBite = 0f;
 			}
@@ -178,10 +178,11 @@ public sealed class Fish : Component
 		particleEffect.Clone(position).Transform.Rotation = new Angles( Vector3.GetAngle(position, Transform.Position),0, 0);
 	}
 
-	public void Grow( float amount = 0.1f )
+	public void Grow( float? amount = 0.1f )
 	{
-		Size += amount;
-		BiteDamage += amount;
+		if ( !amount.HasValue ) return;
+		Size += (float)amount;
+		BiteDamage += (float)amount;
 		Transform.Scale = Size;
 	}
 

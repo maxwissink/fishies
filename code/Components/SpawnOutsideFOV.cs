@@ -13,7 +13,7 @@ public sealed class SpawnOutsideFOV : Component
 	
 	protected override void OnUpdate()
 	{
-		if ( GameObject.Children.Count() >= 35 ) { return; }
+		if ( GameObject.Children.Count() >= 40 ) { return; }
 
 		GameObject SpawnThis = Fish1.Clone( RandomOutsideFOV() );
 		GameObject.Children.Add(SpawnThis);
