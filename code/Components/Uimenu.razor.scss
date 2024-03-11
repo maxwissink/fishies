@@ -59,4 +59,25 @@ Uimenu {
 		display: none;
 		opacity: 0;
 	}
+
+	>.leaderboard{
+		background-color:rgba(black, 0.5);
+		display:flex;
+		flex-direction:column;
+		gap:20px;
+		align-items:center;
+		padding:30px;
+		border-radius:50px;
+		position:absolute;
+		top:0;
+		right:0;
+		margin:20px;
+
+		> .title{
+			border-bottom:solid 2px white;
+		}
+		> .item{
+			border-bottom:solid 1px white;
+		}
+	}
 }

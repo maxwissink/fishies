@@ -52,7 +52,7 @@ public sealed class UnitInfo : Component
 	{
 		_velocity = Transform.Position - _lastPos;
 		_lastPos = Transform.Position;
-		
+
 		TurnAround();
 	}
 

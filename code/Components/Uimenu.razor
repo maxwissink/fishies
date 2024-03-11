@@ -1,5 +1,6 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.Services;
 @inherits PanelComponent
 
 <root class="@((_paused||_gameOver) ? "" : "hide")">
@@ -16,6 +17,13 @@
         <div class="button restart" onclick=@onRestart>Restart</div>
         <div class="button quit" onclick=@onQuit>Quit</div>
     </div>
+    <div class="leaderboard">
+        <div class="title">@_leaderboard.DisplayName</div>
+        @foreach (var e in _leaderboard.Entries)
+            {
+            <div class="item">&#x23;@e.Rank @e.DisplayName - @e.Value</div>
+            }
+    </div>
 </root>
 
 @code
@@ -27,11 +35,21 @@
     private bool _gameOver = false;
     private int _score;
     private GameResource _savestate;
+    private Leaderboards.Board _leaderboard = Sandbox.Services.Leaderboards.Get("score");
 
     protected override void OnStart()
     {
+        _getLeaderboard();
+
         _savestate = Scene.Save();
         Player.Children.FirstOrDefault().Components.Get<UnitInfo>().OnDeath += onDeath;
+    }
+
+    private async void _getLeaderboard(){
+        _leaderboard.Group = "Global";
+        _leaderboard.MaxEntries = 10;
+
+        await _leaderboard.Refresh();
     }
 
     protected override void OnUpdate()
@@ -55,8 +73,9 @@
         Sandbox.Services.Stats.SetValue("score", Player.Components.Get<Player>().Kills);
     }
 
-    void onPaused()
+    async void onPaused()
     {
+        await _leaderboard.Refresh();
         _paused = !_paused;
     }
 
@@ -71,5 +90,5 @@
     }
 
 
-    protected override int BuildHash() => System.HashCode.Combine(_paused, _gameOver, _score);
+    protected override int BuildHash() => System.HashCode.Combine(_paused, _gameOver, _score, _leaderboard.DisplayName);
 }
