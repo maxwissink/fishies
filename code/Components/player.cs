@@ -126,6 +126,7 @@ public sealed class Player : Component
 				if ( unitInfo.IsDead )
 				{
 					Kills += unitInfo.Points;
+					Sandbox.Services.Stats.Increment("score", unitInfo.Points);
 					GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Damage( -1 );
 					if ( _maxHealth < GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health ) _maxHealth = GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health;
 					if ( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health == _maxHealth ) Grow( 0.1f ); ;
