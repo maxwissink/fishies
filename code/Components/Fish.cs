@@ -59,6 +59,7 @@ public sealed class Fish : Component
 	TimeSince _lastBite;
 	Vector3 _lastPos = new Vector3( 0f, 0f, 0f );
 	Vector3 _velocity = new Vector3( 0f, 0f, 0f );
+	float _maxHealth;
 
 	Vector3 _travelDirection = new Vector3( new Random().Float( -50f, 50f ), new Random().Float( -50f, 50f ), 0f );
 
@@ -162,7 +163,8 @@ public sealed class Fish : Component
 				{
 					Kills += unitInfo.Points;
 					UnitInfo.Damage( -1 );
-					Grow( 0.1f );
+					if ( _maxHealth < UnitInfo.Health ) _maxHealth = UnitInfo.Health;
+					if ( UnitInfo.Health == _maxHealth ) Grow( 0.1f );
 				}
 				_lastBite = 0f;
 			}

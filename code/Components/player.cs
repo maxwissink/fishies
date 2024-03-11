@@ -62,6 +62,7 @@ public sealed class Player : Component
 	private TimeSince _lastBite;
 	Vector3 _lastPos = new Vector3( 0f, 0f, 0f );
 	Vector3 _velocity = new Vector3( 0f, 0f, 0f );
+	float _maxHealth;
 
 
 
@@ -126,8 +127,8 @@ public sealed class Player : Component
 				{
 					Kills += unitInfo.Points;
 					GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Damage( -1 );
-					Log.Info( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health );
-					Grow( 0.1f );
+					if ( _maxHealth < GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health ) _maxHealth = GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health;
+					if ( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health == _maxHealth ) Grow( 0.1f ); ;
 				}
 				_lastBite = 0f;
 			}
