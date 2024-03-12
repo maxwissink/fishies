@@ -1,9 +1,10 @@
 {
   "RootObject": {
-    "Id": "b0550d4c-030f-4eda-b466-ffa09fa0e239",
+    "Id": "ee3269fa-79ab-4200-afc4-b2b0a708d867",
     "Name": "death",
     "Tags": "particles",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "ParticleEffect",
@@ -142,7 +143,7 @@
         "Burst": 1000,
         "Delay": 0,
         "DestroyOnEnd": true,
-        "Duration": 5,
+        "Duration": 2,
         "Loop": false,
         "OnEdge": false,
         "Radius": 10,

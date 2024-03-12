@@ -127,7 +127,7 @@ public sealed class Fish : Component
 			{
 				if ( unitInfo.Components.Get<Fish>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
 				if ( unitInfo.GameObject.Parent.Components.Get<Player>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
-				_travelDirection = unitInfo.Transform.Position - Transform.Position;
+				_travelDirection = unitInfo.Transform.Position - MouthWorldPosition;
 			}
 		}
 	}
