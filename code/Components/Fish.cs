@@ -18,9 +18,6 @@ public sealed class Fish : Component
 	[Category( "Components" )]
 	public CharacterController Controller { get; set; }
 	[Property]
-	[Category("Components")]
-	public GameObject particleEffect { get; set; }
-	[Property]
 	[Category( "Stats" )]
 	[Range( 0f, 400f, 1f )]
 	public float WalkSpeed { get; set; } = 50f;
@@ -63,6 +60,7 @@ public sealed class Fish : Component
 	float _maxHealth;
 
 	Vector3 _travelDirection = new Vector3( new Random().Float( -50f, 50f ), new Random().Float( -50f, 50f ), 0f );
+	float calcWalkSpeed;
 
 
 	protected override void OnStart()
@@ -92,6 +90,7 @@ public sealed class Fish : Component
 		if ( _lastBite > BiteDelay ) Bite();
 		SmellSmaller();
 
+		calcWalkSpeed = WalkSpeed / (1 + ((Size - 1))/10);
 		_velocity = Transform.Position - _lastPos;
 		_lastPos = Transform.Position;
 	}
@@ -100,7 +99,7 @@ public sealed class Fish : Component
 	{
 		if ( new Random().Float( 0f, 100f ) < Randomness)
 		{
-			_travelDirection = new Vector3( new Random().Float( -WalkSpeed, WalkSpeed ), new Random().Float( -WalkSpeed, WalkSpeed ), 0f );
+			_travelDirection = new Vector3( new Random().Float( -calcWalkSpeed, calcWalkSpeed ), new Random().Float( -calcWalkSpeed, calcWalkSpeed ), 0f );
 
 		}
 		return _travelDirection;
@@ -127,7 +126,7 @@ public sealed class Fish : Component
 			{
 				if ( unitInfo.Components.Get<Fish>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
 				if ( unitInfo.GameObject.Parent.Components.Get<Player>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
-				_travelDirection = (unitInfo.Transform.Position - MouthWorldPosition).Clamp(-WalkSpeed,WalkSpeed);
+				_travelDirection = (unitInfo.Transform.Position - MouthWorldPosition).Clamp(-calcWalkSpeed, calcWalkSpeed );
 			}
 		}
 	}
@@ -159,7 +158,6 @@ public sealed class Fish : Component
 				if (unitInfo.Components.Get<Fish>()?.Size > Size) return; //check if target is bigger and if bigger dont bite
 				if ( unitInfo.GameObject.Parent.Components.Get<Player>()?.Size > Size ) return; //check if target is bigger and if bigger dont bite
 				unitInfo.Damage( BiteDamage );
-				BleedTarget( unitInfo.Transform.Position );
 				if ( unitInfo.IsDead )
 				{
 					Kills += unitInfo.Points;
@@ -171,11 +169,6 @@ public sealed class Fish : Component
 			}
 		}
 
-	}
-
-	public void BleedTarget(Vector3 position)
-	{
-		particleEffect.Clone(position).Transform.Rotation = new Angles( Vector3.GetAngle(position, Transform.Position),0, 0);
 	}
 
 	public void Grow( float? amount = 0.1f )

@@ -43,7 +43,7 @@ public sealed class SpawnOutsideFOV : Component
 
 	public Vector3 RandomOutsideFOV()
 	{
-		Vector3 random = new Random().VectorInCircle(1000);
+		Vector3 random = new Random().VectorInCircle((1000* (1 + ((_player.Size-1)/10))).Clamp(0,5000));
 		Vector3 target = random;
 		// Get a direction vector from the scene camera to target
 		Vector3 direction = (target - Scene.Camera.Transform.Position).Normal;

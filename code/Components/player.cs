@@ -16,9 +16,6 @@ public sealed class Player : Component
     [Property]
     [Category("Components")]
     public CharacterController Controller {get;set;}
-	[Property]
-	[Category( "Components" )]
-	public GameObject particleEffect { get; set; }
 	/// <summary>
 	/// Sets the default walk speed (units per second)
 	/// </summary>
@@ -122,7 +119,6 @@ public sealed class Player : Component
 			if ( biteTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
 			{
 				unitInfo.Damage( BiteDamage );
-				BleedTarget( unitInfo.Transform.Position );
 				if ( unitInfo.IsDead )
 				{
 					Kills += unitInfo.Points;
@@ -137,17 +133,12 @@ public sealed class Player : Component
 
 	}
 
-	public void BleedTarget( Vector3 position )
-	{
-		particleEffect.Clone(  position );
-	}
-
 	public void Grow( float amount = 0.1f )
 	{
 		Size += amount;
 		BiteDamage += amount*10;
 		Transform.Scale = Size;
-		Scene.Camera.Transform.LocalPosition = new Vector3(0,0,1000/Size);
+		Scene.Camera.Transform.LocalPosition = new Vector3(0,0,1000/(1 + ((Size - 1))/2));
 	}
 
 	public void TurnAround()

@@ -37,7 +37,7 @@
       {
         "__type": "Fish",
         "BiteDamage": 5,
-        "BiteDelay": 1,
+        "BiteDelay": 1.2,
         "BiteRange": 9,
         "Controller": {
           "_type": "component",
