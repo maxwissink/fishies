@@ -3,6 +3,7 @@
     "Id": "cac15fbc-4323-4cf7-8257-f5d638448e8c",
     "Name": "player",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "CharacterController",
@@ -16,7 +17,7 @@
       },
       {
         "__type": "Player",
-        "BiteDamage": 1,
+        "BiteDamage": 5,
         "BiteDelay": 0.5,
         "BiteRange": 9,
         "Camera": {
@@ -34,7 +35,7 @@
           "prefab": "prefabs/blood.prefab"
         },
         "RunSpeed": 250,
-        "Size": 1,
+        "Size": 1.1,
         "WalkSpeed": 120
       }
     ],
@@ -44,6 +45,7 @@
         "Name": "fish",
         "Rotation": "0.5,0.5000001,0.5,0.4999999",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
@@ -59,7 +61,7 @@
               "_type": "gameobject",
               "prefab": "prefabs/death.prefab"
             },
-            "Health": 5,
+            "Health": 2,
             "Points": 1,
             "Team": "Player"
           },
@@ -78,6 +80,7 @@
         "Position": "-20,0,0",
         "Rotation": "0,-0.7071068,0,0.7071068",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "WorldPanel",
@@ -104,6 +107,7 @@
         "Rotation": "0,0.7071068,0,0.7071068",
         "Tags": "maincamera",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "CameraComponent",

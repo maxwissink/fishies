@@ -10,7 +10,17 @@ public sealed class SpawnOutsideFOV : Component
 	[Property]
 	[Category("Spawnlist")]
 	public GameObject Fish1 { get; set; }
-	
+	[Property]
+	[Category("Player")]
+	public GameObject Player { get; set; }
+
+	private Player _player;
+
+	protected override void OnStart()
+	{
+		_player = Player.Components.Get<Player>();
+	}
+
 	protected override void OnUpdate()
 	{
 		if ( GameObject.Children.Count() >= 35 ) { return; }
@@ -19,6 +29,10 @@ public sealed class SpawnOutsideFOV : Component
 		GameObject.Children.Add(SpawnThis);
 		
 		UnitInfo SpawnedInfo = SpawnThis.Components.Get<UnitInfo>();
+		//Log.Info( _player.Size + " / " + (1 + ((_player.Size - 1) / 2) ));
+		SpawnThis.Components.Get<Fish>().Grow((float)(_player.Size - 1)/2);
+		SpawnedInfo.Health = Player.Children.FirstOrDefault().Components.Get<UnitInfo>().Health / 2;
+
 		SpawnedInfo.OnDeath += RemoveFromList;
 	}
 

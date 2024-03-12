@@ -7,6 +7,7 @@
       "Rotation": "0.1257573,0.8858284,-0.06277905,0.4422124",
       "Tags": "light_directional,light",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "DirectionalLight",
@@ -23,6 +24,7 @@
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkyBox2D",
@@ -48,6 +50,7 @@
       "Position": "0,0,-100",
       "Scale": "50,50,5",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
@@ -71,18 +74,24 @@
       "Name": "player",
       "Position": "72.99903,139.4572,0",
       "Enabled": true,
+      "NetworkMode": 2,
       "__Prefab": "prefabs/player.prefab"
     },
     {
       "Id": "ca824f34-d953-478a-b738-0d430ffef48d",
       "Name": "FishSpawner",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SpawnOutsideFOV",
           "Fish1": {
             "_type": "gameobject",
             "prefab": "prefabs/fish.prefab"
+          },
+          "Player": {
+            "_type": "gameobject",
+            "go": "24d23fa7-7363-475a-a0e3-143225d04466"
           }
         }
       ]
@@ -92,12 +101,14 @@
       "Name": "UI",
       "Position": "-64.0963,143.8242,260.3145",
       "Enabled": true,
+      "NetworkMode": 2,
       "Children": [
         {
           "Id": "498eaa0b-da7e-4293-8525-66877c7d2362",
           "Name": "HUD",
           "Position": "0,0,0",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "ScreenPanel",
@@ -121,6 +132,7 @@
           "Name": "PauseMenu",
           "Position": "0,0,0",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "ScreenPanel",
@@ -164,6 +176,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-10T20:15:22.3570631\u002B00:00",
+  "LastSaved": "2024-03-12T21:14:50.308472\u002B01:00",
   "__references": []
 }

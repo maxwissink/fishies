@@ -129,7 +129,6 @@ public sealed class Player : Component
 					Sandbox.Services.Stats.Increment("score", unitInfo.Points);
 					GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Damage( -unitInfo.Points );
 					if ( _maxHealth < GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health ) _maxHealth = GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health;
-					Log.Info("Growing player by " + (float)unitInfo.Points / 10 );
 					if ( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health == _maxHealth ) Grow( (float)unitInfo.Points/10 ); ;
 				}
 				_lastBite = 0f;
@@ -146,7 +145,7 @@ public sealed class Player : Component
 	public void Grow( float amount = 0.1f )
 	{
 		Size += amount;
-		BiteDamage += amount;
+		BiteDamage += amount*10;
 		Transform.Scale = Size;
 		Scene.Camera.Transform.LocalPosition = new Vector3(0,0,1000/Size);
 	}

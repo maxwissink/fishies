@@ -1,9 +1,10 @@
 {
   "RootObject": {
-    "Id": "65873da5-fb89-4b3d-979c-dc99bbd7cfce",
+    "Id": "892b25ff-c6f3-4736-9905-accaa5ce1dad",
     "Name": "fish",
     "Tags": "particles",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "CharacterController",
@@ -35,12 +36,12 @@
       },
       {
         "__type": "Fish",
-        "BiteDamage": 1,
+        "BiteDamage": 5,
         "BiteDelay": 1,
         "BiteRange": 9,
         "Controller": {
           "_type": "component",
-          "go": "65873da5-fb89-4b3d-979c-dc99bbd7cfce",
+          "go": "892b25ff-c6f3-4736-9905-accaa5ce1dad",
           "component_type": "CharacterController"
         },
         "MouthPosition": "20,0,0",
@@ -53,7 +54,7 @@
         "SmellRange": 50,
         "UnitInfo": {
           "_type": "component",
-          "go": "65873da5-fb89-4b3d-979c-dc99bbd7cfce",
+          "go": "892b25ff-c6f3-4736-9905-accaa5ce1dad",
           "component_type": "UnitInfo"
         },
         "WalkSpeed": 50
@@ -68,11 +69,12 @@
     ],
     "Children": [
       {
-        "Id": "31ac10ae-9611-4602-9430-e9e374ef095e",
+        "Id": "cc2f32d7-8c8b-4788-8b29-9e4ba82bae1a",
         "Name": "World",
         "Position": "0,0,-20",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "WorldPanel",
@@ -86,7 +88,7 @@
             "__type": "PlayerPanel",
             "unitInfo": {
               "_type": "component",
-              "go": "65873da5-fb89-4b3d-979c-dc99bbd7cfce",
+              "go": "892b25ff-c6f3-4736-9905-accaa5ce1dad",
               "component_type": "UnitInfo"
             }
           }
