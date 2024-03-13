@@ -3,7 +3,7 @@
 @inherits PanelComponent
 
 <root>
-	<div class="points">Score: @Player.Kills</div>
+	<div class="points">Score: @_score</div>
 </root>
 
 @code
@@ -12,8 +12,18 @@
     [Property]
     public Player Player { get; set; }
 
-	/// <summary>
-	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
-	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( Player.Kills );
+    private int _score = 0;
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        _score = Player.Kills;
+    }
+
+
+    /// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( _score );
 }
