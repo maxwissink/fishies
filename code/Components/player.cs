@@ -121,11 +121,11 @@ public sealed class Player : Component
 				unitInfo.Damage( BiteDamage );
 				if ( unitInfo.IsDead )
 				{
-					Kills += unitInfo.Points;
-					Sandbox.Services.Stats.Increment("score", unitInfo.Points);
-					GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Damage( -unitInfo.Points );
+					Kills += 1;
+					Sandbox.Services.Stats.Increment("score", 1);
+					GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Damage( -1 );
 					if ( _maxHealth < GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health ) _maxHealth = GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health;
-					if ( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health == _maxHealth ) Grow( (float)unitInfo.Points/10 ); ;
+					if ( GameObject.Children.FirstOrDefault().Components.Get<UnitInfo>().Health == _maxHealth ) Grow( 0.1f );
 				}
 				_lastBite = 0f;
 			}
