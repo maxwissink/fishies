@@ -92,7 +92,7 @@ public sealed class UnitInfo : Component
 
 		OnDeath?.Invoke(GameObject);
 
-		GameObject.Destroy();
+		GameObject.DestroyImmediate();
 	}
 	
 	public void TurnAround()

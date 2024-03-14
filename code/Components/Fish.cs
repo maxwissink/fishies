@@ -68,6 +68,13 @@ public sealed class Fish : Component
 		base.OnStart();
 	}
 
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		SmellSmaller();
+	}
+
 	protected override void OnFixedUpdate()
 	{
 
@@ -87,7 +94,6 @@ public sealed class Fish : Component
 		GameObject.Transform.Position = new Vector3( Transform.Position.x, Transform.Position.y, 0 );
 
 		if ( _lastBite > BiteDelay ) Bite();
-		SmellSmaller();
 
 		_velocity = Transform.Position - _lastPos;
 		_lastPos = Transform.Position;
