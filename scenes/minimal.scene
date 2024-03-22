@@ -1,8 +1,8 @@
 {
-  "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
+  "__guid": "9f832399-4887-46b0-8f21-2ee284f538e2",
   "GameObjects": [
     {
-      "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Name": "Sun",
       "Rotation": "0.1257573,0.8858284,-0.06277905,0.4422124",
       "Tags": "light_directional,light",
@@ -11,6 +11,7 @@
       "Components": [
         {
           "__type": "DirectionalLight",
+          "__guid": "43043a37-efd5-4312-aa4c-c029daaf8bc0",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.66977,0.66977,0.66977,1",
@@ -20,7 +21,7 @@
       ]
     },
     {
-      "Id": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
@@ -28,11 +29,13 @@
       "Components": [
         {
           "__type": "SkyBox2D",
+          "__guid": "5f6f4112-0794-4138-a220-5f513491f9c8",
           "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
           "Tint": "1,1,1,1"
         },
         {
           "__type": "EnvmapProbe",
+          "__guid": "edab91b6-ceb7-41e5-9bac-5d90df7f9581",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
@@ -45,7 +48,7 @@
       ]
     },
     {
-      "Id": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+      "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
       "Name": "Plane",
       "Position": "0,0,-100",
       "Scale": "50,50,5",
@@ -54,14 +57,16 @@
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "4696487d-de1e-4ca7-bd0c-ea09e4786240",
           "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default/white.vmat",
+          "MaterialOverride": "materials/sand floor.vmat",
           "Model": "models/dev/plane.vmdl",
           "RenderType": "On",
           "Tint": "0.39546,0.51163,0.27128,1"
         },
         {
           "__type": "BoxCollider",
+          "__guid": "35e94189-cdc5-475a-a41c-4eebe95ea575",
           "Center": "0,0,-5",
           "IsTrigger": false,
           "Scale": "100,100,10",
@@ -70,7 +75,7 @@
       ]
     },
     {
-      "Id": "24d23fa7-7363-475a-a0e3-143225d04466",
+      "__guid": "24d23fa7-7363-475a-a0e3-143225d04466",
       "Name": "player",
       "Position": "72.99903,139.4572,0",
       "Enabled": true,
@@ -78,13 +83,14 @@
       "__Prefab": "prefabs/player.prefab"
     },
     {
-      "Id": "ca824f34-d953-478a-b738-0d430ffef48d",
+      "__guid": "ca824f34-d953-478a-b738-0d430ffef48d",
       "Name": "FishSpawner",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
           "__type": "SpawnOutsideFOV",
+          "__guid": "432fc12e-d46d-43db-b605-8fdd1b96cf22",
           "Fish1": {
             "_type": "gameobject",
             "prefab": "prefabs/fish.prefab"
@@ -97,14 +103,14 @@
       ]
     },
     {
-      "Id": "54bfbd7f-9fd4-4946-bc93-9002bb0d4200",
+      "__guid": "54bfbd7f-9fd4-4946-bc93-9002bb0d4200",
       "Name": "UI",
       "Position": "-64.0963,143.8242,260.3145",
       "Enabled": true,
       "NetworkMode": 2,
       "Children": [
         {
-          "Id": "498eaa0b-da7e-4293-8525-66877c7d2362",
+          "__guid": "498eaa0b-da7e-4293-8525-66877c7d2362",
           "Name": "HUD",
           "Position": "0,0,0",
           "Enabled": true,
@@ -112,6 +118,7 @@
           "Components": [
             {
               "__type": "ScreenPanel",
+              "__guid": "7121fbb4-4262-4d03-98e8-4dd5224f6dc5",
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
@@ -119,8 +126,10 @@
             },
             {
               "__type": "Uiscreen",
+              "__guid": "f11786c0-f700-43ea-8acf-38ac2cd2f164",
               "Player": {
                 "_type": "component",
+                "component_id": "d0801f02-86d0-4df5-ba47-d22d724a5e03",
                 "go": "24d23fa7-7363-475a-a0e3-143225d04466",
                 "component_type": "Player"
               }
@@ -128,7 +137,7 @@
           ]
         },
         {
-          "Id": "b3c0ed60-5df3-4f55-9ed0-693ac6d0cff4",
+          "__guid": "b3c0ed60-5df3-4f55-9ed0-693ac6d0cff4",
           "Name": "PauseMenu",
           "Position": "0,0,0",
           "Enabled": true,
@@ -136,6 +145,7 @@
           "Components": [
             {
               "__type": "ScreenPanel",
+              "__guid": "9334bfd8-59bf-4304-8db6-e7fb8dfb7394",
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
@@ -143,6 +153,7 @@
             },
             {
               "__type": "Uimenu",
+              "__guid": "4bfe0a98-b478-444b-9c71-49e9bc354db9",
               "Player": {
                 "_type": "gameobject",
                 "go": "24d23fa7-7363-475a-a0e3-143225d04466"
@@ -176,6 +187,10 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-12T21:14:50.308472\u002B01:00",
-  "__references": []
+  "LastSaved": "2024-03-22T15:07:11.5969961\u002B01:00",
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": [
+    "gbonn.sandfloor"
+  ]
 }
